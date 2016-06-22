@@ -1,0 +1,22 @@
+{
+  "name": "sweetloc-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "www.github.com"
+  },
+  "keywords": [
+    "location",
+    "reaction"
+  ],
+  "author": "Aykut Asil",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
