@@ -12,11 +12,6 @@ app.set('view engine', 'ejs');
 app.get('/', function(request, response) {
   response.render('pages/index');
 });
-
-app.get('/home', function(req, res) {
-  res.render('pages/home');
-});
-
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
