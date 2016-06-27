@@ -1,5 +1,6 @@
-var sequelize = require('sequelize'),
-User = sequelize.sync('User');
+var sequelize = require('sequelize');
+var models =require('../models');
+var User = models.User;
 jwt = require('jsonwebtoken');
 
 exports.login = function(req, res) {

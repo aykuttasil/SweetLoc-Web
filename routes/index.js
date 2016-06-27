@@ -1,3 +1,4 @@
+/*
 var models  = require('../models');
 var express = require('express');
 var router  = express.Router();
@@ -11,6 +12,10 @@ router.use(function timeLog(req, res, next) {
 
 router.get('/', function(req, res) {
   console.log('routes/index.js: 13');
+  var userList = models.User.findAll();
+  console.log(userList);
+
+
   // models.User.findAll({
   //   include: [ models.Task ]
   // }).then(function(users) {
@@ -23,3 +28,4 @@ router.get('/', function(req, res) {
 });
 
 module.exports = router;
+*/
