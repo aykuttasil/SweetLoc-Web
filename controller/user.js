@@ -3,37 +3,22 @@ var models = require("../models");
 
 exports.save = function(req, res) {
 
-  models.User.create({
-    username: req.body.username,
-    email: req.body.email,
-    ad : req.body.ad
-  }).then(function() {
-    res.redirect('/');
-  });
-
-  // .then(function() {
-  //   models.Tasks.findAll({}).then(function(taskList) {
-  //     res.render('index', {tasks: taskList});
+  models.User.create(req.body).then(function(){
+    res.json({
+      "status" : 200
+    });
+  })
+  // models.User.create({
+  //   username: req.body.username,
+  //   email: req.body.email,
+  //   ad : req.body.ad
+  // }).then(function() {
+  //   res.json({
+  //     success: true,
+  //     data: 'Kayıt Eklendi.'
   //   });
   // });
 
-
-  // var userModel = new User(req.body);
-  //
-  // userModel.save(function(err, user) {
-  //   if (err) {
-  //     console.error('Error occurred while saving user: ', err);
-  //     res.json({
-  //       success: false,
-  //       data: 'Error occurred while saving user'
-  //     })
-  //   } else {
-  //     res.json({
-  //       success: true,
-  //       data: user
-  //     });
-  //   }
-  // });
 };
 
 exports.list = function(req, res) {
