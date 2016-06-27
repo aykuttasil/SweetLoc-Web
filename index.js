@@ -1,22 +1,12 @@
-var express = require('express');
-var app = express();
+var debug = require('debug')('sweetloc');
+var app = require('./core/express');
+var models = require("./models");
 
-app.set('port', (process.env.PORT || 5000));
+app.set('port', process.env.PORT || 3000);
 
-app.use(express.static(__dirname + '/public'));
-
-// views is directory for all template files
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
-
-app.get('/', function(request, response) {
-  response.render('pages/index');
-});
-
-app.get('/home', function(req, res) {
-  res.render('pages/home');
-});
-
-app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
+models.sequelize.sync().then(function () {
+  var server = app.listen(app.get('port'), function() {
+    console.log('Server listening on Port: ' + server.address().port);
+    //debug('Express server listening on port ' + server.address().port);
+  });
 });
