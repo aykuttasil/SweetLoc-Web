@@ -1,47 +1,50 @@
 "use strict";
 
-module.exports = function(sequelize, DataTypes) {
-var Location = sequelize.define('Location', {
-  name: { 
-    type: DataTypes.STRING 
-  },
-  address: { 
-    type: DataTypes.STRING 
-  },
-  loc_latitude: {
-    type: DataTypes.INTEGER,
-    allowNull: true,
-    defaultValue: null,
-    validate: { min: -90, max: 90 }
-  },
-  loc_longitude: {
-    type: DataTypes.INTEGER,
-    allowNull: true,
-    defaultValue: null,
-    validate: { min: -180, max: 180 }
-  },
-  loc_accuracy: {
-    type: DataTypes.INTEGER,
-    allowNull: true,
-    defaultValue: null
-  },
-  loc_time: {
-    type: DataTypes.DATE,
-    allowNull: false,
-    defaultValue: sequelize.NOW
-  }
-},   {
-    freezeTableName: true // Model tableName will be the same as the model name
-  },{
-  validate: {
-    bothCoordsOrNone: function() {
-      if ((this.loc_latitude === null) !== (this.loc_longitude === null)) {
-        throw new Error('Require either both latitude and longitude or neither')
-      }
+module.exports = function (sequelize, DataTypes) {
+
+  var Location = sequelize.define('Location', {
+    name: {
+      type: DataTypes.STRING
+    },
+    address: {
+      type: DataTypes.STRING
+    },
+    locLatitude: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      defaultValue: null,
+      validate: { min: -90, max: 90 }
+    },
+    locLongitude: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      defaultValue: null,
+      validate: { min: -180, max: 180 }
+    },
+    locAccuracy: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      defaultValue: null
+    },
+    locTime: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: sequelize.NOW
     }
-  }
-});
-return Location;
+  },
+    {
+      freezeTableName: true // Model tableName will be the same as the model name
+    },
+    {
+      validate: {
+        bothCoordsOrNone: function () {
+          if ((this.loc_latitude === null) !== (this.loc_longitude === null)) {
+            throw new Error('Require either both latitude and longitude or neither')
+          }
+        }
+      }
+    });
+  return Location;
 }
 
 
