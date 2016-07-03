@@ -12,7 +12,7 @@ var sequelize = sequelize = new Sequelize(process.env.DATABASE_URL || DATABASE_
   dialect: 'postgres',
   protocol: 'postgres',
   dialectOptions: {
-    ssl: true
+    ssl: false
   }
 });
 
