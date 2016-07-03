@@ -5,7 +5,8 @@ exports.save = function (req, res) {
     models.Location.create(req.body).then(function () {
 
         res.json({
-            "status": 300
+            "status": 200,
+            "msg":"Kayıt Başarılı"
         });
 
     }).catch(function (error) {
