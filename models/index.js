@@ -8,7 +8,7 @@ var env       = process.env.NODE_ENV || "development";
 //var sequelize = new Sequelize(config.database, config.username, config.password, config);
 var DATABASE_URL='postgres://rcomzwpcbmesvq:GKtquv-6Mqtkb0IWtG_vn3fAiz@ec2-46-137-73-65.eu-west-1.compute.amazonaws.com:5432/d9gipmror5gubl'
 
-var sequelize = sequelize = new Sequelize(DATABASE_URL, {
+var sequelize = sequelize = new Sequelize(process.env.DATABASE_URL || DATABASE_URL, {
   dialect: 'postgres',
   protocol: 'postgres',
   dialectOptions: {
